@@ -113,14 +113,15 @@ public class AirportService {
         List<Airport> list = dao.getListOfAllAirports();
         List<Flight> flights = dao.getAllFlights();
         int count = 0;
-        for(Airport air : list){
-            if(!air.getAirportName().equals(airportName))continue;
-            for(Flight flight : flights){
-                if(flight.getFlightDate().equals(date) && (flight.getFromCity().equals(airportName) || flight.getToCity().equals(airportName))){
-                    count+=dao.getNumOfPassengersAlreadyInTheFlight(flight.getFlightId());
+        for(Airport air : list) {
+            if (air.getAirportName().equals(airportName)) {
+                for (Flight flight : flights) {
+                    if (flight.getFlightDate().equals(date) && (flight.getFromCity().equals(air.getCity()) || flight.getToCity().equals(air.getCity()))) {
+                        count += dao.getNumOfPassengersAlreadyInTheFlight(flight.getFlightId());
+                    }
                 }
-            }
 
+            }
         }
         return count;
     }
