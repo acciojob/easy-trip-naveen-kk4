@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 
 public class AirportService {
-    @Autowired
-    AirportRepository dao;
+
+    AirportRepository dao = new AirportRepository();
 
     public void addAirport(Airport airport) {
         dao.addAirport(airport);
