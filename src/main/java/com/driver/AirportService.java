@@ -104,7 +104,7 @@ public class AirportService {
         if(curr==null)return null;
         List<Airport> list = dao.getListOfAllAirports();
         for(Airport air : list){
-            if(air.getCity().equals(curr.getFromCity()))return air.getCity().toString();
+            if(curr.getFromCity().equals(air.getCity()))return air.getAirportName();
         }
         return null;
     }
